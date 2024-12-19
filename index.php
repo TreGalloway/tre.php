@@ -15,7 +15,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<body class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 bg-gray-50">
+<!-- Navbar -->
 <nav x-data="{ mobileMenuIsOpen: false }" @click.away="mobileMenuIsOpen = false" class="flex items-center justify-between border-b border-neutral-300 px-6 py-4 dark:border-neutral-700" aria-label="penguin ui menu">
     <!-- Brand Logo -->
     <a href="#" class="text-2xl font-bold text-neutral-900 dark:text-white">
@@ -46,8 +47,8 @@
 
     </ul>
 </nav>
-
-<header class="bg-white pt-24 sm:pt-32" id="header">
+<!-- Hero Section -->
+<header class=" pt-12 sm:pt-16" id="header">
 
   <div class="pl-7">
       <span class="flex size-14 items-center justify-center overflow-hidden rounded-full border border-green-500 bg-green-500 text-white/50">
@@ -80,47 +81,61 @@
         </div>
     </div>
 </header>
-<section class="flex justify-between">
-    <article class="group rounded-md flex max-w-md flex-col border border-neutral-300 bg-neutral-50 p-6 text-neutral-600 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-12 text-neutral-900 dark:text-white group-hover:scale-105 transition duration-500 ease-out" aria-hidden="true">
-            <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z" />
-        </svg>
-        <p class="mt-2 text-pretty text-sm">
-            Simply put, this software transformed my workflow! Its intuitive
-            interface and powerful features make tasks a breeze. A game-changer
-            for productivity!
-        </p>
-        <!-- avatar & rating -->
-        <div class="flex flex-col-reverse md:flex-row md:items-center mt-8 justify-between gap-6">
-            <!-- avatar & title -->
-            <div class="flex items-center gap-2">
-                <img src="https://penguinui.s3.amazonaws.com/component-assets/avatar-1.webp" class="size-10 rounded-full object-cover" alt="avatar"/>
-                <div class="flex flex-col gap-1">
-                    <h3 class="font-bold leading-4 text-neutral-900 dark:text-white">Bob Johnson</h3>
-                    <span class="text-xs">CEO - TechNova</span>
+<!-- Work -->
+<section id="projects" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">/work</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <?php
+            $projects = [
+                [
+                    'title' => 'Project One',
+                    'description' => 'A brief description of your first project.',
+                    'tags' => ['PHP', 'Laravel', 'Vue.js'],
+                    'link' => '#'
+                ],
+                [
+                    'title' => 'Project Two',
+                    'description' => 'A brief description of your second project.',
+                    'tags' => ['React', 'Node.js', 'MongoDB'],
+                    'link' => '#'
+                ],
+                [
+                    'title' => 'Project Three',
+                    'description' => 'A brief description of your third project.',
+                    'tags' => ['Python', 'Django', 'PostgreSQL'],
+                    'link' => '#'
+                ]
+            ];
+
+            foreach ($projects as $project): ?>
+                <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                            <?= htmlspecialchars($project['title']) ?>
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            <?= htmlspecialchars($project['description']) ?>
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <?php foreach ($project['tags'] as $tag): ?>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                        <?= htmlspecialchars($tag) ?>
+                                    </span>
+                            <?php endforeach; ?>
+                        </div>
+                        <a href="<?= htmlspecialchars($project['link']) ?>"
+                           class="inline-flex items-center text-gray-600 hover:text-gray-900">
+                            View Project
+                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <!-- Rating -->
-            <div class="flex items-center gap-1">
-                <span class="sr-only">Rated 4 stars</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 text-amber-500" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 text-amber-500" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 text-amber-500" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 text-amber-500" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 text-neutral-600/50 dark:text-neutral-300/50" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
-                </svg>
-            </div>
+            <?php endforeach; ?>
         </div>
-    </article>
+    </div>
 </section>
 </body>
 
