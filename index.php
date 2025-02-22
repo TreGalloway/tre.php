@@ -48,13 +48,25 @@
         <h1 class="text-2xl">I'm Tre Galloway
         </h1>
         <section>
-            <div class=" text-lg text-teal-600">Freelance Software Developer</div>
-            <div>I'm a self taught software developer currently working towards building a portfolio of freelance clients
+            <div class=" text-lg text-teal-700">Software Developer</div>
+            <div>I'm a self-taught software developer currently working towards building a portfolio of freelance clients
                 and indie apps</div>
             <div class=" italic">Building momentum—one commit at a time.</div>
         </section>
         <section>
             <div class="italic font-bold"> Site is currently a work in progress ... 🚢</div>
+            <div class="text-lg font-bold text-teal-700">
+                Products I'm working on
+            </div>
+            <div class="underline">
+
+                <ul>
+                    Planni- AI based task manager
+                </ul>
+                <ul>
+                    App performance tracker w/ golang
+                </ul>
+            </div>
         </section>
     </main>
 </div>
